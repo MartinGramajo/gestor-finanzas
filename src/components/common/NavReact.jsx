@@ -2,9 +2,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
-// import DarkModeSwitch from "./DarkModeSwitch";
-// import { useContext, useState } from "react";
-// import { UseHeroesContext } from "../context/UseHeroesContext";
 
 export default function NavReact() {
   return (
@@ -20,15 +17,12 @@ export default function NavReact() {
               Home
             </Nav.Link>
             <Nav.Link as={NavLink} to="/agregar">
-              agregar
+              Agregar
             </Nav.Link>
             <Nav.Link as={NavLink} to="/acciones">
-              acciones
+              Acciones
             </Nav.Link>
           </Nav>
-          {/* <div className="ms-auto">
-            <DarkModeSwitch />
-          </div> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
