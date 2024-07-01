@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { agregarTransaction } from "../slices/transactionsSlice";
+import Swal from "sweetalert2";
 
 const FormAgregar = () => {
   const valoresIniciales = {
@@ -31,7 +32,17 @@ const FormAgregar = () => {
     };
 
     dispatch(agregarTransaction(nuevaTransaction));
-    setFormData(valoresIniciales);
+    Swal.fire({
+      title: "¡Éxito!",
+      text: "La transacción ha sido agregada exitosamente.",
+      icon: "success",
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Aceptar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setFormData(valoresIniciales);
+      }
+    });
   };
 
   return (
@@ -47,6 +58,7 @@ const FormAgregar = () => {
               className="form-control"
               id="descripcion"
               name="descripcion"
+              placeholder="Ingresar una descripcion"
               value={formData.descripcion}
               onChange={handleChange}
               required
@@ -58,6 +70,7 @@ const FormAgregar = () => {
             </label>
             <input
               type="number"
+              placeholder="Ingresar el monto"
               className="form-control"
               id="monto"
               name="monto"
@@ -72,6 +85,7 @@ const FormAgregar = () => {
             </label>
             <input
               type="text"
+              placeholder="Ingresar una categoria"
               className="form-control"
               id="categorias"
               name="categorias"

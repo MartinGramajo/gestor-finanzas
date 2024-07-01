@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import Button from "react-bootstrap/Button";
@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { actualizarProducto } from "../slices/transactionsSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const ModalFormEditar = ({ transaction }) => {
   const [show, setShow] = useState(false);
@@ -32,7 +33,6 @@ const ModalFormEditar = ({ transaction }) => {
 
   const handleEditar = (e) => {
     e.preventDefault();
-    console.log(formData);
 
     dispatch(
       actualizarProducto({
@@ -40,9 +40,17 @@ const ModalFormEditar = ({ transaction }) => {
         productoActualizado: formData,
       })
     );
-
-    setFormData(transaction);
-    handleClose();
+    Swal.fire({
+      title: "¡Éxito!",
+      text: "La transacción ha sido modificada exitosamente.",
+      icon: "success",
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Aceptar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleClose();
+      }
+    });
   };
 
   return (
