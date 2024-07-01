@@ -35,7 +35,7 @@ const FormAgregar = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="mt-4">
       <section>
         <form className="card-glass " onSubmit={handleAgregar}>
           <div className="form-group py-2">

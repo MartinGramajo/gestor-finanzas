@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { actualizarProducto } from "../slices/transactionsSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const ModalFormEditar = ({ transaction }) => {
   const [show, setShow] = useState(false);
@@ -46,75 +48,99 @@ const ModalFormEditar = ({ transaction }) => {
   return (
     <div>
       <Button className="btn btn-warning mx-2" onClick={handleShow}>
-        Editar
+        <FontAwesomeIcon icon={faEdit} />
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Formulario Editar</Modal.Title>
+          <Modal.Title>
+            <FontAwesomeIcon className="me-4" icon={faEdit} />
+            Editar
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="p-3" onSubmit={handleEditar}>
-            <div className="form-group">
-              <label>Descripcion</label>
+            <div className="form-group py-2">
+              <label htmlFor="descripcion">Descripción</label>
               <input
                 type="text"
                 className="form-control"
+                id="descripcion"
                 name="descripcion"
                 value={formData.descripcion}
                 onChange={handleChange}
+                required
               />
             </div>
-            <div className="form-group">
-              <label>Monto</label>
+            <div className="form-group py-2">
+              <label htmlFor="monto">Monto</label>
               <input
                 type="number"
                 className="form-control"
+                id="monto"
                 name="monto"
                 value={formData.monto}
                 onChange={handleChange}
+                required
               />
             </div>
-            <div className="form-group">
-              <label>Categorias</label>
+            <div className="form-group py-2">
+              <label htmlFor="categorias">Categorías</label>
               <input
                 type="text"
                 className="form-control"
+                id="categorias"
                 name="categorias"
                 value={formData.categorias}
                 onChange={handleChange}
+                required
               />
             </div>
-            <div className="form-group">
-              <label>Fecha</label>
+            <div className="form-group py-2">
+              <label htmlFor="fecha">Fecha</label>
               <input
-                type="text"
+                type="date"
                 className="form-control"
+                id="fecha"
                 name="fecha"
                 value={formData.fecha}
                 onChange={handleChange}
+                required
               />
             </div>
-            <div className="form-group">
-              <label>¿Es gasto o ingreso?</label>
-              <input
-                type="text"
+            <div className="form-group py-2">
+              <label htmlFor="gastoIngreso">
+                Tipo de Transacción (Gasto/Ingreso)
+              </label>
+              <select
                 className="form-control"
+                id="gastoIngreso"
                 name="gastoIngreso"
                 value={formData.gastoIngreso}
                 onChange={handleChange}
-              />
+                required
+              >
+                <option value="">Seleccionar...</option>
+                <option value="gasto">Gasto</option>
+                <option value="ingreso">Ingreso</option>
+              </select>
             </div>
-            <button type="submit" className="mt-3 btn btn-primary">
-              Modificar
-            </button>
-            <button
-              type="button"
-              onClick={handleClose}
-              className="mt-3 btn btn-secondary"
-            >
-              Cancelar
-            </button>
+            <div className="d-flex justify-content-center">
+              <div className="mx-2">
+                <button type="submit" className="btn btn-success py-2 mt-2">
+                  Modificar
+                </button>
+              </div>
+              <div className="mx-2">
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="btn btn-primary py-2 mt-2 ml-2"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
           </form>
         </Modal.Body>
       </Modal>
