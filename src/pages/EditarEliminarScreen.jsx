@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 
 const EditarEliminarScreen = () => {
   const listadoTransacciones = useSelector((state) => state.transaction);
-
   const dispatch = useDispatch();
 
   const handleStatus = (id) => {
@@ -44,42 +43,46 @@ const EditarEliminarScreen = () => {
         <h5 className="text-center mb-4">Panel de Gestión</h5>
       </div>
       <section className="container">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Descripcion</th>
-              <th>Monto</th>
-              <th>categorias</th>
-              <th>fecha</th>
-              <th>gasto o ingreso</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {listadoTransacciones.map((transaction) => (
-              <tr key={transaction.id}>
-                <td>{transaction.descripcion}</td>
-                <td>{transaction.monto}</td>
-                <td>{transaction.categorias}</td>
-                <td>{transaction.fecha}</td>
-                <td>{transaction.gastoIngreso}</td>
-                <td className="d-flex">
-                  <ModalFormEditar
-                    transaction={transaction}
-                    id={transaction.id}
-                  />
-                  <Button
-                    variant="danger"
-                    className="mx-2"
-                    onClick={() => handleStatus(transaction.id, "eliminado")}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </Button>
-                </td>
+        {listadoTransacciones.length === 0 ? (
+          <p className="text-center">No se encontraron registros.</p>
+        ) : (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Descripción</th>
+                <th>Monto</th>
+                <th>Categorías</th>
+                <th>Fecha</th>
+                <th>Gasto o Ingreso</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {listadoTransacciones.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{transaction.descripcion}</td>
+                  <td>{transaction.monto}</td>
+                  <td>{transaction.categorias}</td>
+                  <td>{transaction.fecha}</td>
+                  <td>{transaction.gastoIngreso}</td>
+                  <td className="d-flex">
+                    <ModalFormEditar
+                      transaction={transaction}
+                      id={transaction.id}
+                    />
+                    <Button
+                      variant="danger"
+                      className="mx-2"
+                      onClick={() => handleStatus(transaction.id, "eliminado")}
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
       </section>
     </div>
   );
