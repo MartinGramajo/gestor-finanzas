@@ -1,5 +1,4 @@
-import React from "react";
-import { useSelector } from "react-redux"; // Importar useSelector de react-redux
+import { useSelector } from "react-redux";
 import {
   PieChart,
   Pie,
@@ -10,19 +9,22 @@ import {
 } from "recharts";
 
 const GraficoTorta = () => {
-  const listadoTransacciones = useSelector((state) => state.transaction); // Obtener listado de transacciones desde Redux
-
-  // Función para calcular el color de cada sección del gráfico
+  const listadoTransacciones = useSelector((state) => state.transaction);
   const getColor = (tipo) => {
-    return tipo === "gasto" ? "#FF5733" : "#3399FF"; // Rojo más fuerte para gastos, Azul más fuerte para ingresos
+    if (tipo === "gasto") {
+      return "#FF5733";
+    } else if (tipo === "ingreso") {
+      return "#32CD32";
+    } else {
+      return "#3399FF";
+    }
   };
 
-  // Convertir los datos a la estructura necesaria para Recharts
   const dataGastos = listadoTransacciones.map((item) => ({
     monto: Number(item.monto),
     fecha: item.fecha,
     tipo: item.gastoIngreso,
-    descripcion: item.descripcion, // Agregamos la descripción (gasto/ingreso)
+    descripcion: item.descripcion,
   }));
 
   if (dataGastos.length === 0) {
@@ -49,9 +51,17 @@ const GraficoTorta = () => {
         </Pie>
         <Tooltip />
         <Legend
-          formatter={(value, entry) =>
-            `${value} - ${entry.payload.descripcion}`
-          }
+          content={({ payload }) => {
+            return (
+              <ul style={{ listStyleType: "none", padding: 0 }}>
+                {payload.map((entry, index) => (
+                  <li key={`item-${index}`} style={{ color: entry.color }}>
+                    {`${entry.value} - ${entry.payload.descripcion} (${entry.payload.monto})`}
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
         />
       </PieChart>
     </ResponsiveContainer>

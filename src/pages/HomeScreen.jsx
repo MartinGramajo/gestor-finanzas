@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image, Table, Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import gestion from "../assets/gestorHome.png";
