@@ -5,7 +5,7 @@ import { eliminarTransaction } from "../slices/transactionsSlice";
 import gestion from "../assets/gestionbanner.jpg";
 import { Button, Image, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
 const EditarEliminarScreen = () => {
@@ -40,7 +40,10 @@ const EditarEliminarScreen = () => {
         <Image className="banner-image" src={gestion} fluid />
       </div>
       <div>
-        <h5 className="text-center mb-4">Panel de Gestión</h5>
+        <h5 className="text-center mb-4">
+          <FontAwesomeIcon className="me-2 " icon={faUserTie} />
+          Panel de Gestión
+        </h5>
       </div>
       <section className="container">
         {listadoTransacciones.length === 0 ? (

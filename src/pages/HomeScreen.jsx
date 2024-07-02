@@ -3,6 +3,9 @@ import { Image, Table, Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import gestion from "../assets/gestorHome.png";
 import GraficoTorta from "../components/GraficoTorta";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck, faPiggyBank } from "@fortawesome/free-solid-svg-icons";
+import { faChartPie } from "@fortawesome/free-solid-svg-icons/faChartPie";
 
 const HomeScreen = () => {
   const [textoBusqueda, setTextoBusqueda] = useState("");
@@ -58,7 +61,10 @@ const HomeScreen = () => {
       </div>
       <section className="container">
         <div className="text-center mb-4">
-          <h5>Controla tus Finanzas con Facilidad</h5>
+          <h5>
+            <FontAwesomeIcon className="me-2 " icon={faCircleCheck} />
+            Controla tus Finanzas con Facilidad
+          </h5>
           <h6>
             Descubre una nueva forma inteligente de administrar tu dinero con
             nuestra aplicación de gestión de finanzas. Desde presupuestos
@@ -112,12 +118,18 @@ const HomeScreen = () => {
         </div>
       </section>
       <section className="container pb-5">
-        <h5 className="text-center mt-4">Gráfico de tus finanzas</h5>
+        <h5 className="text-center mt-4">
+          <FontAwesomeIcon className="me-2 " icon={faChartPie} />
+          Gráfico de tus finanzas
+        </h5>
         <GraficoTorta />
       </section>
       <section className="container pb-4">
         <div>
-          <h4 className="text-center">Balance Total</h4>
+          <h4 className="text-center">
+            <FontAwesomeIcon className="me-2 " icon={faPiggyBank} />
+            Balance Total
+          </h4>
           <h5 className="text-success">
             Total de Ingresos: $ {balanceTotalIngresos}
           </h5>

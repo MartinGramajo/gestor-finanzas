@@ -1,6 +1,8 @@
 import { Image } from "react-bootstrap";
 import FormAgregar from "../components/FormAgregar";
 import gestion from "../assets/gestionForm.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const FormularioAgregarScreen = () => {
   return (
@@ -12,6 +14,7 @@ const FormularioAgregarScreen = () => {
         <section className="container">
           <div className="row">
             <h5 className="text-center mb-4">
+              <FontAwesomeIcon className="me-2 " icon={faCirclePlus} />
               Agrega una Nueva Gestión de Finanzas
             </h5>
             <article className="text-center col-md-6 col-12 d-flex align-items-center justify-content-center">
