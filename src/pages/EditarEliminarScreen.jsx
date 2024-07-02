@@ -46,7 +46,7 @@ const EditarEliminarScreen = () => {
         {listadoTransacciones.length === 0 ? (
           <p className="text-center">No se encontraron registros.</p>
         ) : (
-          <Table striped bordered hover>
+          <Table striped bordered hover responsive>
             <thead>
               <tr>
                 <th>Descripción</th>

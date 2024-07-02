@@ -86,7 +86,7 @@ const HomeScreen = () => {
               No se encontraron registros para la búsqueda.
             </Alert>
           ) : (
-            <Table striped bordered hover>
+            <Table striped bordered hover responsive>
               <thead>
                 <tr>
                   <th>Descripcion</th>
