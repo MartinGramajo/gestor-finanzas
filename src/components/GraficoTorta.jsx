@@ -56,7 +56,7 @@ const GraficoTorta = () => {
               <ul style={{ listStyleType: "none", padding: 0 }}>
                 {payload.map((entry, index) => (
                   <li key={`item-${index}`} style={{ color: entry.color }}>
-                    {`${entry.value} - ${entry.payload.descripcion} (${entry.payload.monto})`}
+                    {`${entry.value} - ${entry.payload.descripcion} ( $${entry.payload.monto})`}
                   </li>
                 ))}
               </ul>

@@ -21,6 +21,36 @@ const HomeScreen = () => {
       )
     : listadoTransacciones;
 
+  const calcularBalanceTotalIngresos = () => {
+    let totalIngresos = 0;
+
+    listadoTransacciones.forEach((transaction) => {
+      if (transaction.gastoIngreso === "ingreso") {
+        totalIngresos += Number(transaction.monto);
+      }
+    });
+
+    return totalIngresos;
+  };
+
+  const calcularBalanceTotalGastos = () => {
+    let totalGastos = 0;
+
+    listadoTransacciones.forEach((transaction) => {
+      if (transaction.gastoIngreso === "gasto") {
+        totalGastos += Number(transaction.monto);
+      }
+    });
+
+    return totalGastos;
+  };
+
+  const balanceTotalIngresos = calcularBalanceTotalIngresos();
+  const balanceTotalGastos = calcularBalanceTotalGastos();
+  const balanceTotal = balanceTotalIngresos - balanceTotalGastos;
+
+  const balanceClass = balanceTotal < 0 ? "text-danger" : "text-success";
+
   return (
     <div>
       <div className="banner-image-container">
@@ -84,6 +114,18 @@ const HomeScreen = () => {
       <section className="container pb-5">
         <h5 className="text-center mt-4">Gráfico de tus finanzas</h5>
         <GraficoTorta />
+      </section>
+      <section className="container">
+        <div>
+          <h5 className="text-center">Balance Total</h5>
+          <h4 className="text-success">
+            Total de Ingresos: $ {balanceTotalIngresos}
+          </h4>
+          <h4 className="text-danger">
+            Total de Gastos: $ {balanceTotalGastos}
+          </h4>
+          <h4 className={balanceClass}>Balance Total: $ {balanceTotal}</h4>
+        </div>
       </section>
     </div>
   );
