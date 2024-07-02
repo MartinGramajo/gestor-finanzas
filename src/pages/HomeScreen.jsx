@@ -89,21 +89,21 @@ const HomeScreen = () => {
             <Table striped bordered hover responsive>
               <thead>
                 <tr>
-                  <th>Descripcion</th>
-                  <th>Monto</th>
-                  <th>Categorias</th>
-                  <th>Fecha</th>
-                  <th>Gasto o Ingreso</th>
+                  <th className="fs-14-12">Descripción </th>
+                  <th className="fs-14-12">Monto ingresado</th>
+                  <th className="fs-14-12">Categoría</th>
+                  <th className="fs-14-12">Fecha</th>
+                  <th className="fs-14-12">Gasto/Ingreso</th>
                 </tr>
               </thead>
               <tbody>
                 {transaccionesFiltradas.map((transaction) => (
                   <tr key={transaction.id}>
-                    <td>{transaction.descripcion}</td>
-                    <td>$ {transaction.monto}</td>
-                    <td>{transaction.categorias}</td>
-                    <td>{transaction.fecha}</td>
-                    <td>{transaction.gastoIngreso}</td>
+                    <td className="fs-14-12">{transaction.descripcion}</td>
+                    <td className="fs-14-12">$ {transaction.monto}</td>
+                    <td className="fs-14-12">{transaction.categorias}</td>
+                    <td className="fs-14-12">{transaction.fecha}</td>
+                    <td className="fs-14-12">{transaction.gastoIngreso}</td>
                   </tr>
                 ))}
               </tbody>
@@ -115,16 +115,16 @@ const HomeScreen = () => {
         <h5 className="text-center mt-4">Gráfico de tus finanzas</h5>
         <GraficoTorta />
       </section>
-      <section className="container">
+      <section className="container pb-4">
         <div>
-          <h5 className="text-center">Balance Total</h5>
-          <h4 className="text-success">
+          <h4 className="text-center">Balance Total</h4>
+          <h5 className="text-success">
             Total de Ingresos: $ {balanceTotalIngresos}
-          </h4>
-          <h4 className="text-danger">
+          </h5>
+          <h5 className="text-danger">
             Total de Gastos: $ {balanceTotalGastos}
-          </h4>
-          <h4 className={balanceClass}>Balance Total: $ {balanceTotal}</h4>
+          </h5>
+          <h5 className={balanceClass}>Balance Total: $ {balanceTotal}</h5>
         </div>
       </section>
     </div>

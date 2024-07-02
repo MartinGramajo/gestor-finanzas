@@ -49,23 +49,23 @@ const EditarEliminarScreen = () => {
           <Table striped bordered hover responsive>
             <thead>
               <tr>
-                <th>Descripción</th>
-                <th>Monto</th>
-                <th>Categorías</th>
-                <th>Fecha</th>
-                <th>Gasto o Ingreso</th>
-                <th>Acciones</th>
+                <th className="fs-14-12">Descripción </th>
+                <th className="fs-14-12">Monto ingresado</th>
+                <th className="fs-14-12">Categoría</th>
+                <th className="fs-14-12">Fecha</th>
+                <th className="fs-14-12">Gasto/Ingreso</th>
+                <th className="fs-14-12">Acciones</th>
               </tr>
             </thead>
             <tbody>
               {listadoTransacciones.map((transaction) => (
                 <tr key={transaction.id}>
-                  <td>{transaction.descripcion}</td>
-                  <td>{transaction.monto}</td>
-                  <td>{transaction.categorias}</td>
-                  <td>{transaction.fecha}</td>
-                  <td>{transaction.gastoIngreso}</td>
-                  <td className="d-flex">
+                  <td className="fs-14-12">{transaction.descripcion}</td>
+                  <td className="fs-14-12">$ {transaction.monto}</td>
+                  <td className="fs-14-12">{transaction.categorias}</td>
+                  <td className="fs-14-12">{transaction.fecha}</td>
+                  <td className="fs-14-12">{transaction.gastoIngreso}</td>
+                  <td className="d-flex fs-14-12">
                     <ModalFormEditar
                       transaction={transaction}
                       id={transaction.id}
