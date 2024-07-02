@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Image, Table, Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import gestion from "../assets/gestorHome.png";
+import GraficoTorta from "../components/GraficoTorta";
 
 const HomeScreen = () => {
   const [textoBusqueda, setTextoBusqueda] = useState("");
   const listadoTransacciones = useSelector((state) => state.transaction);
+  console.log("HomeScreen ~ listadoTransacciones :", listadoTransacciones);
 
   const handleBusquedaChange = (event) => {
     setTextoBusqueda(event.target.value);
@@ -78,6 +80,10 @@ const HomeScreen = () => {
             </Table>
           )}
         </div>
+      </section>
+      <section className="container pb-5">
+        <h5 className="text-center mt-4">Gráfico de tus finanzas</h5>
+        <GraficoTorta />
       </section>
     </div>
   );
